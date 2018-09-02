@@ -38,7 +38,7 @@ public class UserController {
     	user.setCreationDate(getCurrentTime());
     	user.setLastModifiedDate(getCurrentTime());
     	user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        return applicationUserRepository.save(user);
+        return userService.create(user);
     }
 
     @GetMapping(path = {"/{id}"})

@@ -118,7 +118,7 @@ public class DishController {
     	System.out.println("logged in user is "+ userName);
     	ApplicationUser applicationUser = applicationUserRepository.findByEmail(userName);
     	List<Order> userOrders = applicationUser.getOrders();
-    	List<OrderDetails> orderDetails = userOrders.get(0).getOrderDetails();    	
+    	List<OrderDetails> orderDetails = userOrders.get(userOrders.size()-1).getOrderDetails();    	
         return orderDetails;
     }
     

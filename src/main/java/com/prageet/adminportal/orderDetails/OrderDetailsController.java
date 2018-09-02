@@ -1,5 +1,6 @@
 package com.prageet.adminportal.orderDetails;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,12 @@ public class OrderDetailsController {
     private OrderDetailsService orderDetailsService;
 
     @PostMapping
-    public OrderDetails create(@RequestBody OrderDetails orderDetails){
-        return orderDetailsService.create(orderDetails);
+    public List<OrderDetails> create(@RequestBody List<OrderDetails> orderDetailsList){
+    	List<OrderDetails> listOrderDetailsResponse = new ArrayList<OrderDetails>();
+    	for(OrderDetails orderDetails: orderDetailsList) {
+    		listOrderDetailsResponse.add(orderDetailsService.create(orderDetails));
+    	}
+        return listOrderDetailsResponse;
     }
 
     @GetMapping(path = {"/{id}"})
